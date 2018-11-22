@@ -57,6 +57,7 @@ int output(int error_status, const char* error_message, const char* output_strin
     if (error_status) {
         if (error_message) {
             fprintf(stderr, "%s", error_message);
+            fflush(stderr);
         } else {
             fprintf(stderr, "An error occurred; no error message available.\n");
         }
@@ -80,6 +81,7 @@ int output(int error_status, const char* error_message, const char* output_strin
               setmode(fileno(stdout), O_BINARY);
             #endif
             printf("%s", output_string);
+            fflush(stdout);
         }
         return 0;
     } else {
